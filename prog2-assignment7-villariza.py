@@ -31,7 +31,7 @@ try:
                 fnl_upper = True
                 break
             else:
-                pass
+                continue
         if index.isupper() == True:
             None
         else:
@@ -45,7 +45,7 @@ try:
                 fnl_digit = True
                 break
             else:
-                pass
+                continue
         if index.isdigit() == True:
             None
         else:
@@ -59,14 +59,14 @@ try:
                 fnl_splChar = True
                 break
             else:
-                pass
-        if index.isascii() == True:
+                continue
+        if index in "!@#$%^&*()_+":
             None
         else:
             print("\nPassword INVALID. \nCriteria D. - \"Have at least one special char (!@#$%^&*()_+ etc)\" is not justified. \nPlease try again.\n")
             sys.exit()   
 
-    print(f"\nPassword VALID. \n\"{usrOutput}\"\n")
+    print(f"\n\n\nPassword VALID. \n\"{usrOutput}\"\n".center(67, " "))
 
 except EOFError or AssertionError as alpha:
     progSlip = '{}'.format(alpha)
