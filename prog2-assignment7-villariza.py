@@ -7,23 +7,33 @@
 # ex. input: P@ssw0rd+P@ssw0rd
 # ouput: Valid
 
+"""
+VILLARIZA PYTHON PROGRAM
+"""
+
 import sys # Importing Sys for then the if-elif inside the for-loop will be interrupt
+import string
 
 print("\nVillariza's Password Validator.\n \nCRITERA FOR VALIDATION\nA. Greater than \"15 characters\".\nB. Have at least \"one capital letter\". \nC. Have at least one \"number or digit\". \nD. Have at least \"one special chracter\" (e.g. !@#$%^&*()_+).\n")
 
 try:
+    # User Inputs will be stored within the identified global variables below.
     usrInput = input("Enter a \"PASSWORD\" text down below on the space provided in order for Python to validate your input. \n> ")
-    usrOutput = '{}'.format(usrInput)
+    usrOutput = '{}'.format(usrInput.center(80, " "))
 
+    # Criteria A. - While, For, and If-Else Code-Block Program Statement Method.
     fnl_count = 0
-    while fnl_count < 15:
+    while fnl_count <= 15:
         for index in usrInput:
             count = fnl_count + 1
             fnl_count += 1
-        if count < 15:
+        if count <= 15:
             print("\nPassword INVALID. \nCriteria A. - \"Greater than 15 characters\" is not justified. \nPlease try again.\n")
             sys.exit()
+        else:
+            break
     
+    # Criteria B. - While, For, and If-Else Code-Block Program Statement Method.
     fnl_upper = False
     while not(fnl_upper):
         for index in usrInput:
@@ -38,6 +48,7 @@ try:
             print("\nPassword INVALID. \nCriteria B. - \"Have at least one capital letter\" is not justified. \nPlease try again.\n")
             sys.exit()
 
+    # Criteria C. - While, For, and If-Else Code-Block Program Statement Method.
     fnl_digit = False
     while not(fnl_digit):
         for index in usrInput:
@@ -46,27 +57,35 @@ try:
                 break
             else:
                 continue
-        if index.isdigit() == True:
+        if (index.isdigit() or index.isnumeric or index.isdecimal()) == True:
             None
         else:
             print("\nPassword INVALID \nCriteria C. - \"Have at least one number\" is not justified. \nPlease try again.\n")     
             sys.exit()      
 
+    # Criteria D. - While, For, and If-Elif-Else Code-Block Program Statement Method.
     fnl_splChar = False
     while not(fnl_splChar):
         for index in usrInput:
-            if index in "!@#$%^&*()_+":
+            if index in "`~!@#$%^&*()-_=+[]|;:,<.>/?":
                 fnl_splChar = True
+                break
+            elif index.isspace():
                 break
             else:
                 continue
-        if index in "!@#$%^&*()_+":
+        if index in "`~!@#$%^&*()-_=+[]|;:,<.>/?":
             None
+        elif index.isspace():
+            spaceInVal = '\nYour Password must not contain a space! Therefore, it is INVALID. \nPlease try again.\n'.center(90, " ")
+            print(spaceInVal)
+            sys.exit()    
         else:
             print("\nPassword INVALID. \nCriteria D. - \"Have at least one special char (!@#$%^&*()_+ etc)\" is not justified. \nPlease try again.\n")
             sys.exit()   
 
-    print(f"\n\n\nPassword VALID. \n\"{usrOutput}\"\n".center(67, " "))
+    valPassOutput = '{val}'.format(val = "\" Password \033[1mVALID\033[0m \"".center(89, " "))
+    print(f"\n\n\n{valPassOutput} \n\"{usrOutput}\"\n")
 
 except EOFError or AssertionError as alpha:
     progSlip = '{}'.format(alpha)
