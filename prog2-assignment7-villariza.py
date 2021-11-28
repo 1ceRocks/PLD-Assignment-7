@@ -96,7 +96,7 @@ try:
             sys.exit()   
 
     # When all methods have been justified, the User Input will fall under the statement (PASSWORD VALID); thus, it will be present in the terminal as the center format is specified. 
-    valPassOutput = '{val}'.format(val = "\" \033[33;1mPassword Status\033[0m \033[1m|\033[0m \033[32;1mVALID\033[0m \"".center(104, " "))
+    valPassOutput = '{val}'.format(val = "\" \033[33;1mPassword Status\033[0m \033[1m|\033[0m \033[32;1mVALID\033[0m \"".center(112, " "))
     print(f"\n\n{valPassOutput} \n\n\"{usrOutput}\"\n\n")
 
 except EOFError or AssertionError as alpha:
