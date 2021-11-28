@@ -14,21 +14,32 @@ VILLARIZA PYTHON PROGRAM
 import sys # Importing Sys for then the if-elif inside the for-loop will be interrupt
 import string
 
-print("\nVillariza's Password Validator.\n \nCRITERA FOR VALIDATION\nA. Greater than \"15 characters\".\nB. Have at least \"one capital letter\". \nC. Have at least one \"number or digit\". \nD. Have at least \"one special chracter\" (e.g. !@#$%^&*()_+).\n")
+print("\n\033[33;1mVillariza's Password Validator\033[0m\n")
+critTitle = '{Ttl}'.format(Ttl = "\033[32;1mCRITERIA FOR VALIDATION\033[0m\n")
+varA = '{crtA}'.format(crtA = "\033[34;1mA.\033[0m Greater than \"\033[4m15 characters\033[0m\".\n")
+varB = '{crtB}'.format(crtB = "\033[34;1mB.\033[0m Have at least \"\033[4mone capital letter\033[0m\". \n")
+varC = '{crtC}'.format(crtC = "\033[34;1mC.\033[0m Have at least one \"\033[4mnumber or digit\033[0m\". \n")
+varD = '{crtD}'.format(crtD = "\033[34;1mD.\033[0m Have at least \"\033[4mone special character\033[0m\" (e.g. \033[36m` ~ ! @ # $ % ^ & * ( ) - _ = + [ ] | ; : , < . > / ?\033[0m).\n")
+print(f"{critTitle}{varA}{varB}{varC}{varD}")
 
 try:
     # User Inputs will be stored within the identified global variables below.
-    usrInput = input("Enter a \"PASSWORD\" text down below on the space provided in order for Python to validate your input. \n> ")
-    usrOutput = '{}'.format(usrInput.center(80, " "))
+    usrInput = input("\x1B[3m\033[1mInput\x1B[0m and \033[4;1mEnter ↵\033[0m a \"\033[36;1mPASSWORD\033[0m\" character text down below on the space provided for verification purposes. \n\n\033[34;1m>>>\033[0m\033[1m ")
+    usrOutput = '\033[0m\033[1m{}\033[0m'.format(usrInput.center(80, " "))
 
     # Criteria A. - While, For, and If-Else Code-Block Program Statement Method.
     fnl_count = 0
     while fnl_count <= 15:
         for index in usrInput:
-            count = fnl_count + 1
-            fnl_count += 1
+            if index.isspace() == True:
+                spaceInVal = '\033[0m \n\033[33;1mInput Password\033[0m must not contain a \033[36;1mspace\033[0m\033[1m_\033[0m! Therefore, it is \033[31;1mINVALID\033[0m. \n\033[1mPlease try again.\033[0m\n'.center(90, " ")
+                print(spaceInVal)
+                sys.exit()  
+            else:
+                count = fnl_count + 1
+                fnl_count += 1
         if count <= 15:
-            print("\nPassword INVALID. \nCriteria A. - \"Greater than 15 characters\" is not justified. \nPlease try again.\n")
+            print("\033[0m \n\033[33;1mPassword Status\033[0m \033[1m|\033[0m \033[31;1mINVALID\033[0m. \n\n\033[32;1mCRITERIA FOR VALIDATION\033[0m \n\033[34;1mA.\033[0m Greater than \"\033[4m15 characters\033[0m\" \033[36;1m(UNSETTLED)\033[0m. \n\033[1mPlease try again.\033[0m\n")
             sys.exit()
         else:
             break
@@ -45,7 +56,7 @@ try:
         if index.isupper() == True:
             None
         else:
-            print("\nPassword INVALID. \nCriteria B. - \"Have at least one capital letter\" is not justified. \nPlease try again.\n")
+            print("\033[0m \n\033[33;1mPassword Status\033[0m \033[1m|\033[0m \033[31;1mINVALID\033[0m. \n\n\033[32;1mCRITERIA FOR VALIDATION\033[0m - \n\033[34;1mB.\033[0m Have at least \"\033[4mone capital letter\033[0m\" \033[36;1m(UNSETTLED)\033[0m. \n\033[1mPlease try again.\033[0m\n")
             sys.exit()
 
     # Criteria C. - While, For, and If-Else Code-Block Program Statement Method.
@@ -60,7 +71,7 @@ try:
         if (index.isdigit() or index.isnumeric or index.isdecimal()) == True:
             None
         else:
-            print("\nPassword INVALID \nCriteria C. - \"Have at least one number\" is not justified. \nPlease try again.\n")     
+            print("\033[0m \n\033[33;1mPassword Status\033[0m \033[1m|\033[0m \033[31;1mINVALID\033[0m. \n\n\033[32;1mCRITERIA FOR VALIDATION\033[0m - \n\033[34;1mC.\033[0m Have at least one \"\033[4mnumber or digit\033[0m\" \033[36;1m(UNSETTLED)\033[0m. \n\033[1mPlease try again.\033[0m\n")     
             sys.exit()      
 
     # Criteria D. - While, For, and If-Elif-Else Code-Block Program Statement Method.
@@ -77,16 +88,20 @@ try:
         if index in "`~!@#$%^&*()-_=+[]|;:,<.>/?":
             None
         elif index.isspace():
-            spaceInVal = '\nYour Password must not contain a space! Therefore, it is INVALID. \nPlease try again.\n'.center(90, " ")
+            spaceInVal = '\033[0m \n\033[33;1mInput Password\033[0m must not contain a \033[36;1mspace\033[0m\033[1m_\033[0m! Therefore, it is \033[31;1mINVALID\033[0m. \n\033[1mPlease try again.\033[0m\n'.center(90, " ")
             print(spaceInVal)
             sys.exit()    
         else:
-            print("\nPassword INVALID. \nCriteria D. - \"Have at least one special char (!@#$%^&*()_+ etc)\" is not justified. \nPlease try again.\n")
+            print(f"\033[0m \n\033[33;1mPassword Status\033[0m \033[1m|\033[0m \033[31;1mINVALID\033[0m. \n\n\033[32;1mCRITERIA FOR VALIDATION\033[0m - \n\033[34;1mD.\033[0m Have at least \"\033[4mone special character\033[0m\" \033[36;1m(UNSETTLED)\033[0m. \n\033[1mPlease try again.\033[0m\n")
             sys.exit()   
 
-    valPassOutput = '{val}'.format(val = "\" Password \033[1mVALID\033[0m \"".center(89, " "))
-    print(f"\n\n\n{valPassOutput} \n\"{usrOutput}\"\n")
+    # When all methods have been justified, the User Input will fall under the statement (PASSWORD VALID); thus, it will be present in the terminal as the center format is specified. 
+    valPassOutput = '{val}'.format(val = "\" \033[33;1mPassword Status\033[0m \033[1m|\033[0m \033[32;1mVALID\033[0m \"".center(104, " "))
+    print(f"\n\n{valPassOutput} \n\n\"{usrOutput}\"\n\n")
 
 except EOFError or AssertionError as alpha:
-    progSlip = '{}'.format(alpha)
+    """
+    When a defined or an ascertained error occurs on the Program method, it will automatically fall under except command.
+    """
+    progSlip = '\033[0m{}'.format(alpha)
     print(progSlip)     
