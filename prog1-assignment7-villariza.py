@@ -10,8 +10,12 @@
 VILLARIZA PYTHON PROGRAM
 """
 
+import os # Importing Os so that the every Terminal Run would have an apparent and clear window space for user input.
+
+os.system('cls')
 print("\n\033[36;1mVILLARIZA\033[0m \033[1m|\033[0m \033[34;1mCharacter\033[0m \033[33;1mSentence\033[0m \033[1mEvaluator\033[0m\n")
 senChar = input("\x1B[3m\033[1mInput\x1B[0m and \033[4;1mEnter ↵\033[0m a \"\033[36;1mSENTENCE\033[0m\" in the provided space below. \n\n\033[34;1m>>>\033[0m\033[1m ") # Sentence Character , and is used for input function.
+os.system('cls')
 
 def convoke(numWord = 0, numVwl = 0, numCons = 0):
     strLoop = senChar.upper() # Upper Function will be utilized to employ convenicence on the if-elif process.
