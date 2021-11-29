@@ -64,7 +64,7 @@ try:
         # Criteria A. - For Loop within While Loop and If-Elif-Else Code-Block Program Statement Method.
         for index in usrInput:
             fnl_count += 1
-            if fnl_count >= 15:
+            if fnl_count >= 16:
                 progChrCount = True
                 break
             else:
